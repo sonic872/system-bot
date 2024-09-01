@@ -11,7 +11,7 @@ const client = new Client({
 });
 
 // ضع هنا توكن البوت الخاص بك
-const token = 'MTI3ODM2MzE3MzU5ODI2NTQyNA.Gp2vM2.VOjCR_i9PWqwCdZn8xp4a4lUiB2xxj40hGv1iY';
+const token = '';
 const warnChannelId = '1278338550970060812'; // معرف القناة التي ستتلقى التحذيرات
 let hasSentImage = false;
 
@@ -41,18 +41,6 @@ client.once('ready', () => {
 client.on('messageCreate', async message => {
     if (message.guild && message.channel.isTextBased()) {
         const member = message.member;
-
-        // منع الروابط إلا إذا كان المستخدم يمتلك رتبة ادمن استرتر
-        if (message.content.includes('http://') || message.content.includes('https://')) {
-            if (!hasPermission(member, rolePermissions.adminRoleId)) {
-                try {
-                    await message.delete();
-                    message.channel.send(`${message.author}, لا يُسمح بإرسال الروابط هنا.`);
-                } catch (error) {
-                    console.error('Error while deleting a link message:', error);
-                }
-            }
-        }
 
         // تحقق من الأمر *help
         if (message.content === '*help') {
